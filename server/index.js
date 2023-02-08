@@ -2,6 +2,7 @@ import express from 'express';
 import bcrypt from 'bcrypt'
 import Connection from './db/db.js';
 import User from './model/user.js';
+import Form from './model/interview_experience.js';
 
 
 const app=express();
@@ -45,6 +46,17 @@ app.post('/login',async(req,res)=>{
     }
 })
 
+
+app.post('/contribute',async(req,res)=>{
+    try{
+        const {name,email,jobTitle,company,round1,round2,round3,round4} = req.body;
+        const form = new Form({name,email,jobTitle,company,round1,round2,round3,round4});
+        await form.save();
+        res.status(201).json({msg:'information submitted successfully'});
+    }catch(error){
+        return res.status(500).json({msg:'Error while submitting the data'});
+    }
+})
 
 
 
