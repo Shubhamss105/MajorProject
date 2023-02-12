@@ -1,11 +1,16 @@
 import express from 'express';
 import bcrypt from 'bcrypt'
+import cors from 'cors';
+import jwt from 'jsonwebtoken';
 import Connection from './db/db.js';
 import User from './model/user.js';
 import Form from './model/interview_experience.js';
+import token from './model/token.js';
 
 
 const app=express();
+
+app.use(cors());
 
 app.use(express.json())
 
@@ -18,6 +23,7 @@ app.post('/signup',async(req,res)=>{
         const newUser=new User(user);
         await newUser.save();
         res.status(201).json({msg:'user registered successfully'});
+
     }catch(error){
         console.log(error);
     }
@@ -34,9 +40,12 @@ app.post('/login',async(req,res)=>{
         let match = await bcrypt.compare(req.body.password.toString(), user.password);
         if (match) {
 
-            res.status(200).json({msg:'login successfully'})
+            const refreshToken = jwt.sign(user.toJSON(),'asdfasdfasdfasdfasdfasdfasdfasdf')
 
-            // res.status(200).json({ name: user.name, email: user.email });
+            const newToken = new token({token:refreshToken});
+            await newToken.save();
+
+            return res.status(200).json({refreshToken:refreshToken})
         
         } else {
             res.status(400).json({ msg: 'Password does not match' })
@@ -49,12 +58,22 @@ app.post('/login',async(req,res)=>{
 
 app.post('/contribute',async(req,res)=>{
     try{
-        const {name,email,jobTitle,company,round1,round2,round3,round4} = req.body;
-        const form = new Form({name,email,jobTitle,company,round1,round2,round3,round4});
+        const {name,collegeName,jobTitle,company,resumeScreening,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5} = req.body;
+        const form = new Form({name,collegeName,jobTitle,resumeScreening,company,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5});
         await form.save();
         res.status(201).json({msg:'information submitted successfully'});
     }catch(error){
         return res.status(500).json({msg:'Error while submitting the data'});
+    }
+})
+
+app.get('/interviewdata',async(req,res)=>{
+    try{
+        const information=await Form.find({});
+        res.status(200).json(information);
+    } catch(error){
+        res.status(500).json({message:error.message})
+        console.log(error)
     }
 })
 

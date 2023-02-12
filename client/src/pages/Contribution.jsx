@@ -1,26 +1,36 @@
 import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 
 const Contribute = () => {
 
+  const navigate=useNavigate();
+
   const [data,setData] = useState({
     name:'',
-    email:'',
+    collegeName:'',
     jobTitle:'',
     company:'',
+    resumeScreening:'',
+    round1Name:'',
     round1:'',
+    round2Name:'',
     round2:'',
+    round3Name:'',
     round3:'',
-    round4:''
+    round4Name:'',
+    round4:'',
+    round5Name:'',
+    round5:''
   });
 
   const handleChange=(e)=>{
     setData({...data,[e.target.name]:e.target.value});
-    // console.log({...data,[e.target.name]:e.target.value});
+    console.log({...data,[e.target.name]:e.target.value});
   }
 
   const handleClick=async(e)=>{
     e.preventDefault();
-    const {name,email,jobTitle,company,round1,round2,round3,round4}=data;
+    const {name,collegeName,jobTitle,company,resumeScreening,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5}=data;
 
     const res=await fetch('/contribute',{
         method:"POST",
@@ -28,7 +38,7 @@ const Contribute = () => {
             "Content-Type":'application/json'
         },
         body:JSON.stringify({
-            name,email,jobTitle,company,round1,round2,round3,round4
+          name,collegeName,jobTitle,company,resumeScreening,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5
         })
     })
     const responseData=await res.json();
@@ -39,6 +49,7 @@ const Contribute = () => {
         window.alert("Successfull submission");
         console.log('successfull submission');
         setData('')
+        navigate('/');
     }
 }
 
@@ -66,17 +77,17 @@ const Contribute = () => {
           <div class="w-full lg:w-6/12 px-4">
             <div class="relative w-full mb-3">
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                Email address
+                Name
               </label>
-              <input type="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='email' onChange={handleChange} />
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='name' onChange={handleChange} />
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
             <div class="relative w-full mb-3">
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                Name
+                College Name
               </label>
-              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='name' onChange={handleChange}/>
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='collegeName' onChange={handleChange}/>
             </div>
           </div>
           
@@ -114,10 +125,10 @@ const Contribute = () => {
         </h6>
         <div class="w-full lg:w-6/12 px-4">
         <div class="border-0 mb-2 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-        <input type="radio" value="Yes" name="choice" /> Yes<br/>
+        <input type="radio" value="Yes" name="resumeScreening"  onChange={handleChange} /> Yes<br/>
         </div>
         <div class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-        <input type="radio"  value="No" name="choice" /> No<br/>
+        <input type="radio"  value="No" name="resumeScreening"  onChange={handleChange} /> No<br/>
         </div>
         </div>
         
@@ -127,9 +138,22 @@ const Contribute = () => {
         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
           Interview Experience
         </h6>
-        <div class="flex flex-wrap">
           <div class="w-full lg:w-12/12 px-4">
+        <div class="flex flex-wrap">
             <div class="relative w-full mb-3">
+
+
+              
+            <div class="w-full lg:w-6/12">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                What was round 1?
+              </label>
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='r1' onChange={handleChange}/>
+            </div>
+          </div>
+
+
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Round 1
               </label>
@@ -142,6 +166,14 @@ const Contribute = () => {
         <div class="flex flex-wrap">
           <div class="w-full lg:w-12/12 px-4">
             <div class="relative w-full mb-3">
+            <div class="w-full lg:w-6/12">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                What was round 2?
+              </label>
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='r2' onChange={handleChange}/>
+            </div>
+          </div>
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Round 2
               </label>
@@ -153,6 +185,14 @@ const Contribute = () => {
         <div class="flex flex-wrap">
           <div class="w-full lg:w-12/12 px-4">
             <div class="relative w-full mb-3">
+            <div class="w-full lg:w-6/12">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                What was round 3?
+              </label>
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='r3' onChange={handleChange}/>
+            </div>
+          </div>
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Round 3
               </label>
@@ -164,10 +204,37 @@ const Contribute = () => {
         <div class="flex flex-wrap">
           <div class="w-full lg:w-12/12 px-4">
             <div class="relative w-full mb-3">
+            <div class="w-full lg:w-6/12">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                What was round 4?
+              </label>
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='r4' onChange={handleChange}/>
+            </div>
+          </div>
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Round 4
               </label>
               <textarea type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="4" name='round4' onChange={handleChange}> </textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap">
+          <div class="w-full lg:w-12/12 px-4">
+            <div class="relative w-full mb-3">
+            <div class="w-full lg:w-6/12">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                What was round 5?
+              </label>
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='r5' onChange={handleChange}/>
+            </div>
+          </div>
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                Round 5
+              </label>
+              <textarea type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="4" name='round5' onChange={handleChange}> </textarea>
             </div>
           </div>
         </div>

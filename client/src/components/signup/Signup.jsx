@@ -8,6 +8,8 @@ const Signup = () => {
 
   const {setAccount}=useContext(DataContext);
 
+  const [error,setError] = useState(' ');
+
 
   const [signup, setSignup] = useState({
     name: "",
@@ -34,12 +36,18 @@ const Signup = () => {
         })
     })
     const data=await res.json();
+
+    const { token } = data;
+      localStorage.setItem("jwt", token);
+      console.log(token);
     if(!data){
+      setError('Something went wrong! Please try again later')
         window.alert("Invalid registration");
         console.log("invalid registration");
     }else{
         window.alert("Successfull registration");
         console.log('successfull registration');
+        setError(' ')
         setAccount(signup.name)
     }
 }
@@ -119,6 +127,7 @@ const Signup = () => {
                 />
               </div>
             </div>
+            {error && <p>{error} </p>}
             <div className="flex w-full">
               <button
                 type="submit"
