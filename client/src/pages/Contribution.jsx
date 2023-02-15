@@ -8,8 +8,8 @@ const Contribute = () => {
   const [data,setData] = useState({
     name:'',
     collegeName:'',
-    jobTitle:'',
     company:'',
+    jobTitle:'',
     resumeScreening:'',
     round1Name:'',
     round1:'',
@@ -30,7 +30,7 @@ const Contribute = () => {
 
   const handleClick=async(e)=>{
     e.preventDefault();
-    const {name,collegeName,jobTitle,company,resumeScreening,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5}=data;
+    const {name,collegeName,company,jobTitle,resumeScreening,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5}=data;
 
     const res=await fetch('/contribute',{
         method:"POST",
@@ -38,7 +38,7 @@ const Contribute = () => {
             "Content-Type":'application/json'
         },
         body:JSON.stringify({
-          name,collegeName,jobTitle,company,resumeScreening,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5
+          name,collegeName,company,jobTitle,resumeScreening,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5
         })
     })
     const responseData=await res.json();
@@ -149,7 +149,7 @@ const Contribute = () => {
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 What was round 1?
               </label>
-              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='r1' onChange={handleChange}/>
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='round1Name' onChange={handleChange}/>
             </div>
           </div>
 
@@ -171,7 +171,7 @@ const Contribute = () => {
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 What was round 2?
               </label>
-              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='r2' onChange={handleChange}/>
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='round2Name' onChange={handleChange}/>
             </div>
           </div>
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
@@ -190,7 +190,7 @@ const Contribute = () => {
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 What was round 3?
               </label>
-              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='r3' onChange={handleChange}/>
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='round3Name' onChange={handleChange}/>
             </div>
           </div>
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
@@ -209,7 +209,7 @@ const Contribute = () => {
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 What was round 4?
               </label>
-              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='r4' onChange={handleChange}/>
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='round4Name' onChange={handleChange}/>
             </div>
           </div>
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
@@ -228,7 +228,7 @@ const Contribute = () => {
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 What was round 5?
               </label>
-              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='r5' onChange={handleChange}/>
+              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name='round5Name' onChange={handleChange}/>
             </div>
           </div>
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">

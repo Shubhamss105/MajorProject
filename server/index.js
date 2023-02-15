@@ -12,7 +12,7 @@ const app=express();
 
 app.use(cors());
 
-app.use(express.json())
+app.use(express.json());
 
 
 app.post('/signup',async(req,res)=>{
@@ -56,10 +56,41 @@ app.post('/login',async(req,res)=>{
 })
 
 
+// app.post('/contribute', (req, res) => {
+//     // Create a new form data object from the request body
+//     const formData = new Form({
+//       name: req.body.name,
+//       collegeName: req.body.collegeName,
+//       jobTitle: req.body.jobTitle,
+//       company: req.body.company,
+//       resumeScreening: req.body.resumeScreening,
+//       round1Name: req.body.round1Name,
+//       round1: req.body.round1,
+//       round2Name: req.body.round2Name,
+//       round2: req.body.round2,
+//       round3Name: req.body.round3Name,
+//       round3: req.body.round3,
+//       round4Name: req.body.round4Name,
+//       round4: req.body.round4,
+//       round5Name: req.body.round5Name,
+//       round5: req.body.round5
+//     });
+  
+//     // Save the form data to the database
+//     formData.save((error) => {
+//       if (error) {
+//         console.log(error);
+//         res.send(error);
+//       } else {
+//         res.send.json({'Form data saved successfully!'});
+//       }
+//     });
+//   });
 app.post('/contribute',async(req,res)=>{
+    const {name,collegeName,company,jobTitle,resumeScreening,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5} = req.body;
     try{
-        const {name,collegeName,jobTitle,company,resumeScreening,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5} = req.body;
-        const form = new Form({name,collegeName,jobTitle,resumeScreening,company,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5});
+
+        const form = new Form({name,collegeName,company,jobTitle,resumeScreening,round1Name,round1,round2Name,round2,round3Name,round3,round4Name,round4,round5Name,round5});
         await form.save();
         res.status(201).json({msg:'information submitted successfully'});
     }catch(error){

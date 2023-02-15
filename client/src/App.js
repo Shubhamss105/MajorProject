@@ -6,6 +6,7 @@ import Signup from './components/signup/Signup';
 import Contribution from './pages/Contribution';
 import Home from './pages/Home';
 import DataProvider from './context/DataProvider';
+import InterviewData from './pages/InterviewData';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
            
           <Route path='/' element={<Home/>}/> 
           <Route path='/contribute' element={<Contribution/>}/>
+          <Route path='/details' element={<InterviewData/>}/>
         </Routes>
       </BrowserRouter>
     </DataProvider>

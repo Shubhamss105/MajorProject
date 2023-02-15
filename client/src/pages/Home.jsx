@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import HomeCards from "../components/cards/HomeCards";
 import Hero from "../components/Hero";
 import detailAction from "../redux/actions/detailActions";

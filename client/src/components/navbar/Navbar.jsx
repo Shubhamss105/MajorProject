@@ -22,8 +22,8 @@ const Navbar = () => {
                             <NavLink className="text-gray-800  hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium" to="/">
                                 Home
                             </NavLink>
-                            <NavLink className="text-gray-800   hover:text-gray-900  px-3 py-2 rounded-md text-sm font-medium"to="/">
-                                Gallery
+                            <NavLink className="text-gray-800   hover:text-gray-900  px-3 py-2 rounded-md text-sm font-medium"to="/details">
+                                Details
                             </NavLink>
                             <NavLink className="text-gray-800  hover:text-gray-900  px-3 py-2 rounded-md text-sm font-medium" to="/">
                                 Content

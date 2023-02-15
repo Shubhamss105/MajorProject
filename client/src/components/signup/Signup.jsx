@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/DataProvider";
 import { useContext } from 'react';
 
 
 const Signup = () => {
+
+  const navigate=useNavigate();
+
 
   const {setAccount}=useContext(DataContext);
 
@@ -49,6 +52,7 @@ const Signup = () => {
         console.log('successfull registration');
         setError(' ')
         setAccount(signup.name)
+        navigate('login')
     }
 }
 
