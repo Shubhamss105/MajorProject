@@ -9,20 +9,20 @@ const HomeCards = () => {
     <>
     <div className='flex flex-col'>
     <div className='grid grid-cols-4 gap-4'>
-        <div className=' outline outline-offset-2 outline-1 rounded'>
-            <img className='p-3' src="https://icons8.com/icon/17949/google" alt="" />
+        <div className=''>
+            <img className='' src="https://www.logo.wine/a/logo/Amazon_(company)/Amazon_(company)-Logo.wine.svg" alt="" />
         </div>
-        <div className=' outline outline-offset-2 outline-1 rounded'>
-            <img className='p-3 ' src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="" />
+        <div className=''>
+            <img className='p-10 ' src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="" />
         </div>
-        <div className=' outline outline-offset-2 outline-1 rounded'>
-            <img className='p-3' src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="" />
+        <div className=' '>
+            <img className='p-12' src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="" />
         </div>
-        <div className=' outline outline-offset-2 outline-1 rounded'>
-            <img className='p-3' src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="" />
+        <div className=''>
+            <img className='p-8' src="https://www.tcs.com/content/dam/global-tcs/en/images/home/dark-theme.svg" alt="" />
         </div>
     </div>
-     <div className='flex justify-content-center align-items-center mt-5 p-5'>
+     <div className='flex justify-center items-center mt-5 p-5'>
         <h1 className='text-3xl font-semibold'>Find Comapnies That deserve you!</h1>
      </div>
 

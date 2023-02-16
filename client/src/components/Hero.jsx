@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Hero = () => {
+
+  const [text,setText] = useState('');
+
+  const getText=(text)=>{
+    setText(text);
+  }
   return (
     
 <div className="bg-[rgb(250, 251, 255)]  overflow-hidden relative ml-[8%] mr-[8%] mt-10">
@@ -18,7 +24,7 @@ const Hero = () => {
         </p>
         <div className="flex space-x-4 mt-5">
         <div className="flex border-2px solid red rounded-md overflow-hidden w-full">
-          <input type="text" className="w-full pl-3 rounded-md rounded-r-none border-2" placeholder='Enter company' />
+          <input type="text" className="w-full pl-3 rounded-md rounded-r-none border-2" placeholder='Enter company' onChange={(e)=>getText(e.target.value)} />
           <button className="bg-indigo-600 text-white px-6 text-lg font-semibold py-4 rounded-r-md">Go</button>
         </div>
         {/* <button className="bg-green-500 px-6 text-lg font-semibold py-4 rounded-md">Clear</button> */}

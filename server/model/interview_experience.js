@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const interviewSchema = mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     collegeName: {
         type: String,
