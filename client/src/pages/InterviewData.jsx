@@ -76,9 +76,11 @@ const InterviewData = () => {
             </div>
           </div>
           <div className="flex">
-            <div className="bg-[#ebf0f6] h-11 rounded-sm p-1 text-[#97a0be] text-xs">
-              <span className=" text-sm">05</span> <br /> Round
-            </div>
+            
+                <div className="bg-[#ebf0f6] h-11 rounded-sm p-1 text-[#97a0be] text-xs">
+                <span className=" text-sm">05</span> <br /> Round
+              </div>
+            
             <div className="p-2 mt-[-16px] flex flex-col">
               <h4 className="text-base font-semibold m-2">{info.round5Name}</h4>
               <p className="m-2">{info.round5}</p>
