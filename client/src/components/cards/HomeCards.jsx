@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import InterviewData from '../../pages/InterviewData';
 
 const HomeCards = () => {
 
@@ -24,7 +25,7 @@ const HomeCards = () => {
     </div>
      <div className='flex justify-center items-center mt-5 p-5'>
         <h1 className='text-3xl font-semibold'>Find Comapnies That deserve you!</h1>
-     </div>
+     </div> */}
 
     <div className="container my-8 mx-auto px-4 md:px-12">
     <div className="flex flex-wrap -mx-1 px-10 lg:-mx-4">
@@ -34,7 +35,7 @@ const HomeCards = () => {
         {
           information.map(data=>(
             <>
-            <div className="my-1 px-4 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 hover:scale-110 delay-100 md:p-3 sm:p-5">
+            <div key={data.name +  ':' + data.jobTitle} className="my-1 px-4 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 hover:scale-110 delay-100 md:p-3 sm:p-5">
 
 <article className="overflow-hidden rounded-lg shadow-lg">
 
@@ -49,7 +50,7 @@ const HomeCards = () => {
             </a>
         </h1>
         <p className="text-grey-darker text-sm">
-            11/1/19
+            {data.jobTitle}
         </p>
     </header>
 
@@ -78,6 +79,7 @@ const HomeCards = () => {
 </div>
 
 </div> 
+<InterviewData/>
 </>
   )
 }
