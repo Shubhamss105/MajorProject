@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import HomeCards from "../components/cards/HomeCards";
+// import HomeCards from "../components/cards/HomeCards";
 import Hero from "../components/Hero";
 import detailAction from "../redux/actions/detailActions";
 import About from "./About";
@@ -16,8 +16,8 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <div className='lg:mx-[10%] lg:mt-[3%] sm:mb-5'>
-      <HomeCards/>
+      <div className='lg:mx-[5%] lg:mt-[3%] sm:mb-5'>
+      {/* <HomeCards/> */}
       <About/>
       </div>
     </>

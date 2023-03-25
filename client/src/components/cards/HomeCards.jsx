@@ -25,7 +25,7 @@ const HomeCards = () => {
     </div>
      <div className='flex justify-center items-center mt-5 p-5'>
         <h1 className='text-3xl font-semibold'>Find Comapnies That deserve you!</h1>
-     </div> */}
+     </div> */
 
     <div className="container my-8 mx-auto px-4 md:px-12">
     <div className="flex flex-wrap -mx-1 px-10 lg:-mx-4">

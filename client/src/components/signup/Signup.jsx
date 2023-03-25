@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { DataContext } from "../../context/DataProvider";
-import { useContext } from 'react';
+// import { DataContext } from "../../context/DataProvider";
+// import { useContext } from 'react';
 
 
 const Signup = () => {
@@ -9,7 +9,7 @@ const Signup = () => {
   const navigate=useNavigate();
 
 
-  const {setAccount}=useContext(DataContext);
+  // const {setAccount}=useContext(DataContext);
 
   const [error,setError] = useState(' ');
 
@@ -51,8 +51,8 @@ const Signup = () => {
         window.alert("Successfull registration");
         console.log('successfull registration');
         setError(' ')
-        setAccount(signup.name)
-        navigate('login')
+        // setAccount(signup.name)
+        navigate('/login')
     }
 }
 
